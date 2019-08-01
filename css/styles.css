@@ -1,0 +1,370 @@
+body{
+	font-family: "Source Sans Pro";
+}
+
+.nav{
+	background-color: rgba(255, 255, 255, 0.7);
+	position: fixed;
+	z-index: 2;
+	margin: -3px 0 0 0;
+	padding: 0;
+}
+
+.option{
+	margin: 20px;
+}
+
+.my-name{
+	/*text-decoration: none;*/
+	margin-left: 10%;
+	display: none;
+	color: gray;
+}
+
+h3.section{
+	color: grey;
+}
+
+.text-intro{
+	position: relative;
+	/*margin: auto;*/
+	margin-left: 50vw;
+	/*width: 100%;*/
+	color: #FFF;
+	/*border: 5px solid white;*/
+	
+	/*width: 48vw;*/
+	/*height: 450px;*/
+	/*display: inline-block;*/
+	/*background-color: white;*/
+	/*float: left;*/
+}
+#typed-text{
+	margin-top: 20px;
+	position: absolute;
+	top: 60px;
+	background-color: rgba(255, 255, 255, 0.5);
+	padding: 5px;
+	left: -261px;
+	/*left: 125px;*/
+}
+.image-intro {
+	/*position: relative;*/
+	/*float: right;*/
+	display: inline-block;
+	height: 450px;
+	width: 100vw;
+	background-image: url("../images/honey_bee_entrance.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*margin: 0 -15px;*/
+	z-index: -1;
+}
+.about-paragraph{
+	font-size: 22px;
+	padding: 35px;
+}
+
+.bee-1{
+	/*position: absolute;*/
+	/*top: 3px;*/
+	/*width: 100px;*/
+	height: 450px;
+	background-image: url("../images/honeyBee.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*margin: 0 -15px;*/
+	z-index: 5;
+}
+
+.bee-2{
+	/*position: absolute;*/
+	/*top: 30px;*/
+	/*width: 100px;*/
+	height: 450px;
+	background-image: url("../images/honeyBee8.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*margin: 0 -15px;*/
+	z-index: 5;
+}
+
+.bee-3{
+	/*position: absolute;*/
+	/*top: 30px;*/
+	/*width: 100px;*/
+	height: 450px;
+	background-image: url("../images/honeyBee3.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*margin: 0 -15px;*/
+	z-index: 5;
+}
+.bee-4{
+	/*position: absolute;*/
+	/*top: 30px;*/
+	/*width: 100px;*/
+	height: 450px;
+	background-image: url("../images/honeyBee9.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*margin: 0 -15px;*/
+	z-index: 5;
+}
+.bee-5{
+	/*position: absolute;*/
+	/*top: 30px;*/
+	/*width: 100px;*/
+	height: 450px;
+	background-image: url("../images/honeyBee5.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*margin: 0 -15px;*/
+	z-index: 5;
+}
+.bee-6{
+	/*position: absolute;*/
+	/*top: 30px;*/
+	/*width: 100px;*/
+	height: 450px;
+	background-image: url("../images/honeyBee6.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*margin: 0 -15px;*/
+	z-index: 5;
+}
+.bee-7{
+	/*position: absolute;*/
+	/*top: 30px;*/
+	/*width: 100px;*/
+	height: 450px;
+	background-image: url("../images/honeyBee10.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*margin: 0 -15px;*/
+	z-index: 5;
+}
+
+.about{
+	/*margin-top: 80px;*/
+	margin-bottom: 80px;
+}
+
+#about {
+	float: right;
+	/*border: 15px solid white;*/
+	width: 250px;
+	margin: 35px;
+	/*margin-top: -140px;*/
+	/*border-radius: 50%;*/
+	/*z-index: 5;*/
+}
+
+.menu li {
+	font-size: 16px;
+	display: inline-block;
+	color: gray;
+	padding: 20px;
+}
+
+li.selected {
+	color: #C9DFF9;
+}
+
+.shoebox img, .catch-fred, .blackjack, .movie{
+	max-width: 100%;
+	min-height: 230px;
+}
+
+.project-text{
+	font-size: 18px;
+	padding: 10px;
+}
+
+.shoebox-links{
+	margin-bottom: 10px;
+}
+
+.shoebox-links a{
+	color: black;
+	border: .5px solid black;
+	margin: 5px 10px 0 0;
+	border-radius: 15px;
+	padding: 7px;
+}
+
+.blackjack{
+	background-image: url('../images/blackjack.png');
+	background-size: cover;
+}
+
+.catch-fred{
+	background-image: url('../images/fred.png');
+	background-size: cover;
+}
+.movie{
+	background-image: url('../images/movie.png');
+	background-size: cover;
+}
+
+.other-projects{
+	margin-top: 80px;
+	position: relative;
+}
+
+.hover-to-display{
+	margin-bottom: 80px;
+}
+
+.project-hover{
+	display: none;
+	background-color: rgba(0, 0, 0, 0.8);
+	/*background-size: cover;*/
+	/*padding: 0;*/
+	min-height: 230px;
+	color: white;
+	padding: 25px;
+	/*min-width: 100%;*/
+	/*margin-top: 10px;*/
+	/*z-index: 3;*/
+}
+
+.project-hover a{
+	font-size: 10px;
+	color: white;
+	border: .5px solid white;
+	margin: 5px 5px;
+	border-radius: 15px;
+	padding: 7px;
+}
+
+.project-head{
+	font-size: 20px;
+}
+
+.project-skills-head{
+	font-size: 18px;
+}
+
+/*.shoebox-text{
+	background-color: #F1F8FE;
+}*/
+
+.skills{
+	margin-bottom: 80px;
+}
+
+.tech p{
+	font-size: 16px;
+}
+
+.skills img{
+	margin-top: 15px;
+	width: 90px;
+	height: 90px;
+	/*margin: auto;*/
+}
+
+.skills > div{
+	text-align: center;
+	padding: 25px;
+	/*border: 1px solid grey;*/
+	height: 225px;
+}
+
+.skills p{
+	/*line-height: 20px;*/
+	margin-top: 15px;
+	color: grey;
+}
+
+.javascript, .react, .python{
+	border-bottom: .5px solid grey;
+}
+
+.javascript, .express, .css{
+	border-right: .5px solid grey;
+}
+
+.python, .html, .github{
+	border-left: .5px solid grey;
+}
+
+.css, .mysql, .github{
+	border-top: .5px solid grey;
+}
+
+@media only screen and (max-width: 991px){
+	.javascript, .react, .python, .express, .node, .html, .css, .mysql, .github{
+		border: none;
+	}
+
+	.about-paragraph, #typed-text{
+		font-size: 30px;
+	}
+	/*.javascript*/
+}
+
+.tech a{
+	display: none;
+	color: grey;
+	font-size: 12px;
+	/*border: transparent;*/
+	border: .5px solid transparent;
+	margin-top: 5px;
+	border-radius: 15px;
+	padding: 7px;
+	transition: border 1s;
+}
+
+.tech a:hover{
+	border: .5px solid #C9DFF9;
+	/*text-decoration: none;*/
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.fa{
+	color: grey;
+	transition: color .2s;
+}
+
+.fa:hover{
+	color:#C9DFF9 ;
+}
+
+/*.footer{
+	margin-top: 10px;
+}*/
+
+#contact, #projects, .copyright{
+	padding: 25px;
+	/*margin-bottom: 100px;*/
+}
+
+.copyright{
+	color: grey;
+}
+
+#contact a{
+	padding: 20px;
+}
+
+.tooltip > .tooltip-inner{
+	background-color: grey;
+}
+
+.tooltip.bottom > .tooltip-arrow{
+	border-bottom: 5px solid grey;
+}
+
+.footer{
+	background-color: #F1F8FE;
+	/*background-size: 100vw;*/
+	width: 100vw;
+	margin: 0 -25px -25px;
+	padding: 0;
+	background-size: cover;
+}
