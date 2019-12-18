@@ -205,11 +205,13 @@ li.selected {
 }
 .uhlu{
 	background-image: url('../images/uhlu.png');
-	background-size: cover;
+  background-size: cover;
+  background-position: center;
 }
 .swim{
 	background-image: url('../images/swim.png');
-	background-size: cover;
+  background-size: cover;
+  background-position: center;
 }
 
 .other-projects{
@@ -304,13 +306,17 @@ li.selected {
 }
 
 @media only screen and (max-width: 991px){
-	.javascript, .react, .python, .express, .node, .html, .css, .mysql, .github{
+	.javascript, .react, .python, .express, .node, .html, .css, .mysql, .github, .electron{
 		border: none;
-	}
+  }
+  
+  nav {
+    visibility: hidden;
+  }
 
 	.about-paragraph, #typed-text{
 		font-size: 30px;
-	}
+  }
 	/*.javascript*/
 }
 
