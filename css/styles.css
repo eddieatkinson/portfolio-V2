@@ -171,7 +171,7 @@ li.selected {
 	color: #C9DFF9;
 }
 
-.shoebox img, .catch-fred, .blackjack, .movie{
+.shoebox img, .catch-fred, .blackjack, .movie, .swim, .smileup, .uhlu{
 	max-width: 100%;
 	min-height: 230px;
 }
@@ -198,12 +198,26 @@ li.selected {
 	background-size: cover;
 }
 
+.smileup{
+	background-image: url('../images/smileup.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .catch-fred{
 	background-image: url('../images/fred.png');
 	background-size: cover;
 }
+.uhlu{
+	background-image: url('../images/uhlu.png');
+	background-size: cover;
+}
 .movie{
 	background-image: url('../images/movie.png');
+	background-size: cover;
+}
+.swim{
+	background-image: url('../images/swim.png');
 	background-size: cover;
 }
 
@@ -282,7 +296,7 @@ li.selected {
 	border-bottom: .5px solid grey;
 }
 
-.javascript, .express, .css{
+.javascript, .express, .css, .electron{
 	border-right: .5px solid grey;
 }
 
@@ -290,8 +304,12 @@ li.selected {
 	border-left: .5px solid grey;
 }
 
-.css, .mysql, .github{
+.css, .mysql, .github, .electron{
 	border-top: .5px solid grey;
+}
+
+.electron img{
+  filter: grayscale();
 }
 
 @media only screen and (max-width: 991px){
