@@ -1,8 +1,9 @@
 const fullFileNameArray = [];
 let fileLocation;
+let includeClassPrefix = true;
 
 function getNames(fileArray) {
-  const nameArray = _.map(fileArray, (file) => {
+  const nameArray = _.map(fileArray, file => {
     const fileNameWithExtension = file.name;
     fullFileNameArray.push(fileNameWithExtension);
     const nameWithoutExtension = removeExtension(fileNameWithExtension);
@@ -13,12 +14,12 @@ function getNames(fileArray) {
 }
 
 function removeExtension(fileName) {
-  const nameWithoutExtension = fileName.replace(/\..*/, '');
+  const nameWithoutExtension = fileName.replace(/\..*/, "");
   return nameWithoutExtension;
 }
 
 function removeJPEGNumber(fileName) {
-  const justName = fileName.replace(/\-.+/, ''); // Remove anything after the first dash encaountered
+  const justName = fileName.replace(/\-.+/, ""); // Remove anything after the first dash encaountered
   return justName;
 }
 
@@ -55,22 +56,22 @@ function addMultiples(count, uniqueNameArray, countArray) {
 }
 
 function separateClassWithComma(filesWithMultiples) {
-  const commaSeparatedClassArray = _.map(filesWithMultiples, (file) => {
-    const fileWithComma = file.replace(' ', ',');
+  const commaSeparatedClassArray = _.map(filesWithMultiples, file => {
+    const fileWithComma = file.replace(" ", ",");
     return fileWithComma;
   });
   return commaSeparatedClassArray;
 }
 
 function createSpreadsheet(commaSeparatedClassArray) {
-  const spreadsheetContent = commaSeparatedClassArray.join('\r\n');
+  const spreadsheetContent = commaSeparatedClassArray.join("\r\n");
   return spreadsheetContent;
 }
 
 function createGroupArray(countArray) {
   let groupNumber = 1;
   const groupArray = [];
-  _.forEach(countArray, (count) => {
+  _.forEach(countArray, count => {
     for (let i = 0; i < count; i++) {
       groupArray.push(groupNumber);
     }
@@ -92,7 +93,7 @@ function createImageData(nameArray, groupArray, date, school) {
 }
 
 function setNoShowRequirements() {
-  localStorage.setItem('doNotShow', true);
+  localStorage.setItem("doNotShow", true);
 }
 
 function checkForNoShowRequirements() {
@@ -101,9 +102,9 @@ function checkForNoShowRequirements() {
 }
 
 function separateNameAndClass(fileName) {
-  const fileNameArray = fileName.split(' ');
-  const className = fileNameArray.shift();
-  const nameOnly = fileNameArray.join(' ');
+  const fileNameArray = fileName.split(" ");
+  const className = includeClassPrefix ? fileNameArray.shift() : "";
+  const nameOnly = fileNameArray.join(" ");
   return [className, nameOnly];
 }
 
@@ -111,7 +112,7 @@ $(document).ready(() => {
   let uniqueNameArray = [];
   let countArray;
   let nameArray;
-  const formContent = $('.form');
+  const formContent = $(".form");
   const formHTML = `
     <div>
       <form>
@@ -134,66 +135,104 @@ $(document).ready(() => {
   if (noShowRequirements) {
     formContent.html(formHTML);
   }
-  $('#acceptGuidelines').click(() => {
-    const doNotShow = $('#doNotShow:checked').val();
-    if (doNotShow) {
-      setNoShowRequirements();
+  $("#doNotIncludeClass").click(() => {
+    const doNotIncludeclass = $("#doNotIncludeClass:checked").val();
+    includeClassPrefix = !doNotIncludeclass;
+    const classPrefix = $(".classPrefix");
+    if (doNotIncludeclass) {
+      classPrefix.css("display", "none");
+    } else {
+      classPrefix.css("display", "inline");
     }
+  });
+  $("#acceptGuidelines").click(() => {
     formContent.html(formHTML);
   });
-  $('.form').on('change', '#readFiles', (event) => { // Change label content depending on files chosen
-    let fileName = '';
-    const readFiles = $('#readFiles')[0];
+  $(".form").on("change", "#readFiles", event => {
+    // Change label content depending on files chosen
+    let fileName = "";
+    const readFiles = $("#readFiles")[0];
     const numberOfFiles = readFiles.files && readFiles.files.length;
     if (numberOfFiles > 1) {
-      fileName = (readFiles.getAttribute('data-multiple-caption') || '').replace('{count}', numberOfFiles);
+      fileName = (
+        readFiles.getAttribute("data-multiple-caption") || ""
+      ).replace("{count}", numberOfFiles);
     } else if (numberOfFiles) {
       fileName = readFiles.files[0].name;
     }
 
     if (fileName) {
-      $('#readFiles').next('label').html(fileName);
+      $("#readFiles")
+        .next("label")
+        .html(fileName);
     }
   });
-  $('.form').on('click', '#imageData', () => {
-    const dateHTML = $('#imageData:checked').val() ? '<label for="date">Date shot</label><input id="date" type="date" placeholder="Date shot" />' : '';
-    $('#dateSection').html(dateHTML);
+  $(".form").on("click", "#imageData", () => {
+    const dateHTML = $("#imageData:checked").val()
+      ? '<label for="date">Date shot</label><input id="date" type="date" placeholder="Date shot" />'
+      : "";
+    $("#dateSection").html(dateHTML);
   });
-  $('.form').on('click', '#submit', () => {
-    const files = $('#readFiles')[0].files;
-    const count = $('#count').val();
-    const school = $('#school').val();
-    const date = $('#date').val();
-    const includeImageData = $('#imageData:checked').val();
-    
+  $(".form").on("click", "#submit", () => {
+    const files = $("#readFiles")[0].files;
+    const count = $("#count").val();
+    const school = $("#school").val();
+    const date = $("#date").val();
+    const includeImageData = $("#imageData:checked").val();
+
     if (_.isEmpty(files)) {
-      alert('Please select files');
+      alert("Please select files");
     } else if (!count || !school || (includeImageData && !date)) {
-      alert('All fields are required');
+      alert("All fields are required");
     } else {
       nameArray = getNames(files);
       uniqueNameArray = _.uniq(nameArray);
       countArray = getCount(nameArray, uniqueNameArray);
-      const filesWithMultiples = addMultiples(count, uniqueNameArray, countArray);
-      const commaSeparatedClassArray = separateClassWithComma(filesWithMultiples);
+      const filesWithMultiples = addMultiples(
+        count,
+        uniqueNameArray,
+        countArray
+      );
+      const commaSeparatedClassArray = separateClassWithComma(
+        filesWithMultiples
+      );
       const spreadsheetContent = createSpreadsheet(commaSeparatedClassArray);
-      const plural = includeImageData ? 's' : '';
+      const plural = includeImageData ? "s" : "";
 
-      const fileNames = includeImageData ? `"${school}.csv" and "${school}.txt"` : `"${school}.csv"`;
+      const fileNames = includeImageData
+        ? `"${school}.csv" and "${school}.txt"`
+        : `"${school}.csv"`;
       function download() {
-        var downloadCSV = document.createElement('a');
-        downloadCSV.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(spreadsheetContent)}`);
-        downloadCSV.setAttribute('download', `${school}.csv`);
+        var downloadCSV = document.createElement("a");
+        downloadCSV.setAttribute(
+          "href",
+          `data:text/plain;charset=utf-8,${encodeURIComponent(
+            spreadsheetContent
+          )}`
+        );
+        downloadCSV.setAttribute("download", `${school}.csv`);
         downloadCSV.click();
         if (includeImageData) {
           const groupArray = createGroupArray(countArray);
-          const imageDataContent = createImageData(nameArray, groupArray, date, school);
-          var downloadTXT = document.createElement('a');
-          downloadTXT.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(imageDataContent)}`);
-          downloadTXT.setAttribute('download', `${school}.txt`);
+          const imageDataContent = createImageData(
+            nameArray,
+            groupArray,
+            date,
+            school
+          );
+          var downloadTXT = document.createElement("a");
+          downloadTXT.setAttribute(
+            "href",
+            `data:text/plain;charset=utf-8,${encodeURIComponent(
+              imageDataContent
+            )}`
+          );
+          downloadTXT.setAttribute("download", `${school}.txt`);
           downloadTXT.click();
         }
-        alert(`File${plural} successfully created!\nCheck for file${plural} named ${fileNames} in your "Downloads" folder.`);
+        alert(
+          `File${plural} successfully created!\nCheck for file${plural} named ${fileNames} in your "Downloads" folder.`
+        );
       }
       setTimeout(() => {
         download();
