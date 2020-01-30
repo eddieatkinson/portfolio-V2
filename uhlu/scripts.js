@@ -92,15 +92,6 @@ function createImageData(nameArray, groupArray, date, school) {
   return imageDataContent;
 }
 
-function setNoShowRequirements() {
-  localStorage.setItem("doNotShow", true);
-}
-
-function checkForNoShowRequirements() {
-  const doNotShow = localStorage.doNotShow;
-  return doNotShow;
-}
-
 function separateNameAndClass(fileName) {
   const fileNameArray = fileName.split(" ");
   const className = includeClassPrefix ? fileNameArray.shift() : "";
@@ -131,10 +122,6 @@ $(document).ready(() => {
     </div>
     <button class="btn-large waves-effect" id="submit">Create List!</button>
   `;
-  const noShowRequirements = checkForNoShowRequirements();
-  if (noShowRequirements) {
-    formContent.html(formHTML);
-  }
   $("#doNotIncludeClass").click(() => {
     const doNotIncludeclass = $("#doNotIncludeClass:checked").val();
     includeClassPrefix = !doNotIncludeclass;
