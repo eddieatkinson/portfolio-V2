@@ -57,7 +57,7 @@ function addMultiples(count, uniqueNameArray, countArray) {
 
 function separateClassWithComma(filesWithMultiples) {
   const commaSeparatedClassArray = _.map(filesWithMultiples, file => {
-    const fileWithComma = file.replace(" ", ",");
+    const fileWithComma = file ? file.replace(" ", ",") : "";
     return fileWithComma;
   });
   return commaSeparatedClassArray;
