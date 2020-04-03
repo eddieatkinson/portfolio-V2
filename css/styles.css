@@ -319,7 +319,7 @@ li.selected {
   filter: grayscale();
 }
 
-.other-projects h3 {
+.other-projects hr {
   display: none;
 }
 
@@ -337,7 +337,7 @@ li.selected {
     border: none;
   }
 
-  .other-projects h3 {
+  .other-projects hr {
     display: block;
   }
 
